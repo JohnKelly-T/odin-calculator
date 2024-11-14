@@ -10,7 +10,6 @@ html {
 }
 
 body {
-    background-color: #7FB8AA;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,29 +17,53 @@ body {
     height: 100%;
 }
 
+.light-background {
+    background-color: #7FB8AA;
+}
+
+.dark-background {
+    background-color: #08120F;
+}
+
 #main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #7FB8AA;
     border-radius: 50px;
     overflow: hidden;
     height: 80%;
     aspect-ratio: 9 / 16;
+}
+
+.light-main-container {
     background: linear-gradient(145deg, #88C5B6, #72A699);
     box-shadow:  10px 10px 20px #598177,
                 -10px -10px 20px #98DDCC;
 }
 
+.dark-main-container {
+    background: linear-gradient(145deg, #091310, #07100E);
+    box-shadow:  10px 10px 20px #040908,
+                -10px -10px 20px #0C1B17;
+}
+
+
 #output-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.05);
     padding: 10% 15% 0;
     gap: 20%;
     width: 100%;
     height: 30%;
+}
+
+.light-output {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark-output {
+    background-color: rgba(56, 56, 56, 0.05);
 }
 
 #history {
@@ -53,7 +76,6 @@ body {
     text-align: right;
     font-size: 2em;
     font-weight: bold;
-    color: #294665;
 }
 
 #buttons-container {
@@ -76,28 +98,48 @@ body {
 }
 
 button {
+    color: inherit;
     font-weight: bold;
     font-size: 1.5em;
-    color: #294665;
     padding: 0;
     margin: 0;
     height: 100%;
     border: none;
     border-radius: 50px;
     aspect-ratio: 1;
+}
+
+.light-button {
     background: linear-gradient(145deg, #88C5B6, #72A699);
     box-shadow:  7px 7px 35px #649186,
                 -7px -7px 35px #9ADFCE;
     transition: all 0.5s;
 }
 
-button:hover {
+.light-button:hover {
     box-shadow:  7px 7px 15px #649186,
                 -7px -7px 15px #9ADFCE;
 }
 
-button:active {
+.light-button:active {
     background: linear-gradient(145deg, #72A699, #88C5B6);
+    box-shadow: none;
+}
+
+.dark-button {
+    background: linear-gradient(145deg, #091310, #07100e);
+    box-shadow:  7px 7px 35px #030706,
+                -7px -7px 35px #0d1d18;
+    transition: all 0.5s;
+}
+
+.dark-button:hover {
+    box-shadow:  7px 7px 15px #030706,
+                -7px -7px 15px #0d1d18;
+}
+
+.dark-button:active {
+    background: linear-gradient(145deg, rgb(5, 14, 12), rgb(11, 21, 18));
     box-shadow: none;
 }
 
@@ -107,4 +149,12 @@ button:active {
 
 #divide, #multiply, #minus, #plus, #equal {
     color: #BF4242;
+}
+
+.light-font-color {
+    color: #294665;
+}
+
+.dark-font-color {
+    color: rgb(175, 175, 175);
 }
