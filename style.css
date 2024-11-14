@@ -127,7 +127,7 @@ button {
 }
 
 .dark-button {
-    background: linear-gradient(145deg, #091310, #07100e);
+    background: linear-gradient(145deg, rgb(11, 21, 18), rgb(5, 14, 12));
     box-shadow:  7px 7px 35px #030706,
                 -7px -7px 35px #0d1d18;
     transition: all 0.5s;
