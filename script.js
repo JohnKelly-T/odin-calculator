@@ -1,4 +1,10 @@
 const OPERATORS = "+-×÷";
+const PRECEDENCE = {
+    '×': 2,
+    '÷': 2,
+    '+': 1,
+    '-': 1
+  };
 
 let expression = document.querySelector("#calculation")
 let history = document.querySelector("#history");
@@ -131,19 +137,77 @@ function operate(a, b, operator) {
     }
 }
 
+// parse with simplified Shunting yard algorithm without parentheses and powers
 function parseExpression(expression) {
     // split components of expression
     let arrExpression = expression.split(" ");
 
-    let firstNum = Number(arrExpression[0]);
-    let secondNum = Number(arrExpression[2]);
-    let operator = arrExpression[1];
+    // convert percentages to decimal notation
+    let tokens = arrExpression.map((item) => {
+        if (item.slice(-1) === "%") {
+            return Number(item.slice(0, 1)) * 0.01;
+        } else if (OPERATORS.includes(item)){
+            return item;
+        } else {
+            return Number(item);
+        }
+    })
 
-    if (!secondNum) {
-        return firstNum;
+    tokens = convertToRPN(tokens);
+
+    let resultStack = [];
+
+    for (let i = 0; i < tokens.length; i++) {
+        let token = tokens[i];
+
+        if (typeof(token) === "number") {
+            resultStack.push(token);
+        } else {
+            let num1 = resultStack.pop();
+            let num2 = resultStack.pop();
+
+            switch (token) {
+                case '+':
+                    resultStack.push(num2 + num1);
+                    break;
+                case '-':
+                    resultStack.push(num2 - num1);
+                    break;
+                case '×':
+                    resultStack.push(num2 * num1);
+                    break; 
+                case '÷':
+                    resultStack.push(num2 / num1);
+                break;
+            }
+        }
     }
 
-    return operate(firstNum, secondNum, operator);
+    return resultStack.pop();
+}
+
+// convert expression into postfix notation or Reverse Polish Notation
+function convertToRPN(tokens) {
+    let outputQueue = [];
+    let operatorStack = [];
+
+    for (let i = 0; i < tokens.length; i++) {
+        if (typeof(tokens[i]) === "number") {
+            outputQueue.push(tokens[i]);
+        } else {
+            while (operatorStack.length != 0 && PRECEDENCE[tokens[i]] <= PRECEDENCE[operatorStack.slice(-1)]) {
+                outputQueue.push(operatorStack.pop());
+            }
+
+            operatorStack.push(tokens[i]);
+        }
+    }
+
+    while (operatorStack.length !== 0) {
+        outputQueue.push(operatorStack.pop());
+    }
+
+    return outputQueue;
 }
 
 function isLastCharOperator() {
