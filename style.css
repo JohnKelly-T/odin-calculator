@@ -31,7 +31,7 @@ body {
     align-items: center;
     border-radius: 50px;
     overflow: hidden;
-    height: 80%;
+    height: 70%;
     aspect-ratio: 9 / 16;
 }
 
@@ -107,6 +107,7 @@ button {
     border: none;
     border-radius: 50px;
     aspect-ratio: 1;
+    cursor: pointer;
 }
 
 .light-button {
