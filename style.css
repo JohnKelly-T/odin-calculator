@@ -73,7 +73,10 @@ body {
 }
 
 #calculation {
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    white-space: nowrap;
+    overflow: hidden;
     font-size: 2em;
     font-weight: bold;
 }
