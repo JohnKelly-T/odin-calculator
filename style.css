@@ -32,6 +32,7 @@ body {
     border-radius: 50px;
     overflow: hidden;
     height: 70%;
+    min-height: 400px;
     aspect-ratio: 9 / 16;
 }
 
