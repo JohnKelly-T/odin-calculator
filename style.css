@@ -67,7 +67,10 @@ body {
 }
 
 #history {
-    font-size: 1.5em;
+    padding: 0;
+    margin: 0;
+    height: 1.2em;
+    font-size: 1.2em;
     font-weight: bold;
     color: #4C6279;
 }
