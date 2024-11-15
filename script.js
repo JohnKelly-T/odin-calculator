@@ -41,15 +41,11 @@ buttonsContainer.addEventListener("click", (e) => {
             expression.textContent += " +";
             break;
         case "minus":
-            if (expression.textContent.slice(-1) === "+") {
+            if (expression.textContent.slice(-1) === "+" || expression.textContent.slice(-1) === "-") {
                 expression.textContent = expression.textContent.slice(0, -2);
             } 
             
-            if (isOutputEmpty()) {
-                expression.textContent = "-";
-            } else {
-                expression.textContent += " -";
-            }
+            expression.textContent += " -";
 
             break;
         case "multiply":
