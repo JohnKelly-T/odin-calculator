@@ -20,8 +20,12 @@ buttonsContainer.addEventListener("click", (e) => {
             }
             
             break;
-        case "%":
-            // TODO
+        case "percent":
+            if (isLastCharOperator()) {
+                expression.textContent = expression.textContent.slice(0, -2);
+            }
+
+            expression.textContent += "%";
             break;
         case "plus":
             if (isLastCharOperator()) {
@@ -79,6 +83,8 @@ buttonsContainer.addEventListener("click", (e) => {
                 expression.textContent = e.target.id;
             } else if (isLastCharOperator() && !isNegativeSign()) {
                 expression.textContent += " " + e.target.id;
+            } else if (expression.textContent.slice(-1) === "%") { 
+                expression.textContent += " × " + e.target.id;
             } else {
                 expression.textContent += e.target.id;
             }
