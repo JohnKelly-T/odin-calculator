@@ -75,11 +75,16 @@ buttonsContainer.addEventListener("click", (e) => {
             expression.textContent += " +";
             break;
         case "minus":
-            if (isLastCharOperator()) {
+            if (expression.textContent.slice(-1) === "+") {
                 expression.textContent = expression.textContent.slice(0, -2);
             } 
+            
+            if (isOutputEmpty()) {
+                expression.textContent = "-";
+            } else {
+                expression.textContent += " -";
+            }
 
-            expression.textContent += " -";
             break;
         case "multiply":
             if (isLastCharOperator()) {
@@ -109,7 +114,7 @@ buttonsContainer.addEventListener("click", (e) => {
         case "9":
             if (isOutputEmpty()) {
                 expression.textContent = e.target.id;
-            } else if (isLastCharOperator()) {
+            } else if (isLastCharOperator() && !isNegativeSign()) {
                 expression.textContent += " " + e.target.id;
             } else {
                 expression.textContent += e.target.id;
@@ -142,4 +147,17 @@ function isOutputEmpty() {
     } else {
         return false;
     }
+}
+
+function isNegativeSign() {
+
+    if (expression.textContent.length === 1 && expression.textContent === "-") {
+        return true;
+    }
+
+    if (OPERATORS.includes(expression.textContent.slice(-3).split(" ")[0])) {
+        return true;
+    }
+
+    return false;
 }
