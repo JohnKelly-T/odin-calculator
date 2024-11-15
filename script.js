@@ -144,12 +144,16 @@ changeThemeButton.addEventListener("click", (e) => {
     buttonsContainer.classList.add(`${theme}-font-color`);
 
     for (let i = 0; i < buttons.length; i++) {
+        buttons[i].style.transition = "none";
         buttons[i].classList.add(`${theme}-button`);
-    }
-
-    for (let i = 0; i < buttons.length; i++) {
         buttons[i].classList.remove(`${prevTheme}-button`);
     }
+
+    setTimeout( () => {
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].style.transition = "all 0.5s";
+        }
+    }, 500)
 })
 
 function add(a, b) {
