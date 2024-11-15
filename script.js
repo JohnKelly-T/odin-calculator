@@ -19,7 +19,7 @@ buttonsContainer.addEventListener("click", (e) => {
         case "del":
             if (expression.textContent.length === 1) {
                 expression.textContent = "0";
-            } else if (isLastCharOperator()) {
+            } else if (isLastCharOperator() || expression.textContent.split(" ").at(-1).length === 1) {
                 expression.textContent = expression.textContent.slice(0, -2);
             } else {
                 expression.textContent = expression.textContent.slice(0, -1);
