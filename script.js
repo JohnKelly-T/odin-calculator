@@ -1,49 +1,5 @@
 const OPERATORS = "+-×÷";
 
-function add(a, b) {
-    return a + b;
-}
-
-function subtract(a, b) {
-    return a - b;
-}
-
-function multiply(a, b) {
-    return a * b;
-}
-
-function divide(a, b) {
-    return a / b;
-}
-
-function operate(a, b, operator) {
-    switch(operator) {
-        case "+":
-            return add(a, b);
-        case "-":
-            return subtract(a, b);
-        case "×":
-            return multiply(a, b);
-        case "÷":
-            return divide(a, b);
-    }
-}
-
-function parseExpression(expression) {
-    // split components of expression
-    let arrExpression = expression.split(" ");
-
-    let firstNum = Number(arrExpression[0]);
-    let secondNum = Number(arrExpression[2]);
-    let operator = arrExpression[1];
-
-    if (!secondNum) {
-        return firstNum;
-    }
-
-    return operate(firstNum, secondNum, operator);
-}
-
 let expression = document.querySelector("#calculation")
 let history = document.querySelector("#history");
 let buttonsContainer = document.querySelector("#buttons-container");
@@ -131,6 +87,50 @@ buttonsContainer.addEventListener("click", (e) => {
             break;
     }
 })
+
+function add(a, b) {
+    return a + b;
+}
+
+function subtract(a, b) {
+    return a - b;
+}
+
+function multiply(a, b) {
+    return a * b;
+}
+
+function divide(a, b) {
+    return a / b;
+}
+
+function operate(a, b, operator) {
+    switch(operator) {
+        case "+":
+            return add(a, b);
+        case "-":
+            return subtract(a, b);
+        case "×":
+            return multiply(a, b);
+        case "÷":
+            return divide(a, b);
+    }
+}
+
+function parseExpression(expression) {
+    // split components of expression
+    let arrExpression = expression.split(" ");
+
+    let firstNum = Number(arrExpression[0]);
+    let secondNum = Number(arrExpression[2]);
+    let operator = arrExpression[1];
+
+    if (!secondNum) {
+        return firstNum;
+    }
+
+    return operate(firstNum, secondNum, operator);
+}
 
 function isLastCharOperator() {
     let strExpression = expression.textContent;
