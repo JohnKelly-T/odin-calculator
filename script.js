@@ -57,7 +57,14 @@ buttonsContainer.addEventListener("click", (e) => {
             expression.textContent += " ÷";
             break;
         case "decimal":
-            // TODO
+            if (isOutputEmpty() || !isLastCharOperator()) {
+                if (!isDecimalInUse()) {
+                    expression.textContent += ".";
+                }
+            } else {
+                expression.textContent += " 0.";
+            }
+
             break;
         case "1":
         case "2":
@@ -156,6 +163,16 @@ function isNegativeSign() {
     }
 
     if (OPERATORS.includes(expression.textContent.slice(-3).split(" ")[0])) {
+        return true;
+    }
+
+    return false;
+}
+
+function isDecimalInUse() {
+    let arrExpression = expression.textContent.split(" ");
+
+    if (arrExpression[arrExpression.length - 1].includes(".")) {
         return true;
     }
 
