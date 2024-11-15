@@ -45,12 +45,14 @@ function parseExpression(expression) {
 }
 
 let expression = document.querySelector("#calculation")
+let history = document.querySelector("#history");
 let buttonsContainer = document.querySelector("#buttons-container");
 
 buttonsContainer.addEventListener("click", (e) => {
     switch (e.target.id) {
         case "clear":
             expression.textContent = "0";
+            history.textContent = " ";
             break;
         case "del":
             if (expression.textContent.length === 1) {
@@ -115,6 +117,11 @@ buttonsContainer.addEventListener("click", (e) => {
 
             break;
         case "equal":
+            if (isLastCharOperator()) {
+                break;
+            }
+
+            history.textContent = expression.textContent + " =";
             expression.textContent = parseExpression(expression.textContent);
             break;
     }
