@@ -19,6 +19,21 @@ body {
     height: 100%;
 }
 
+#change-theme-button {
+    position: fixed;
+    top: 2em;
+    right: 2em;
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: 5vh;
+    aspect-ratio: 1;
+    background-color: transparent;
+    background-image: url("./img/theme-icon.png");
+    background-size: contain;
+    cursor: pointer;
+}
+
 .light-background {
     background-color: #7FB8AA;
 }
@@ -106,7 +121,7 @@ body {
     gap: 8.5%;
 }
 
-button {
+.button-row button {
     color: inherit;
     font-weight: bold;
     font-size: 1.5em;
@@ -119,11 +134,15 @@ button {
     cursor: pointer;
 }
 
+.base-button {
+    background-color: #7FB8AA;
+    transition: all 0.5s;
+}
+
 .light-button {
     background: linear-gradient(145deg, #88C5B6, #72A699);
     box-shadow:  7px 7px 35px #649186,
                 -7px -7px 35px #9ADFCE;
-    transition: all 0.5s;
 }
 
 .light-button:hover {
@@ -140,7 +159,6 @@ button {
     background: linear-gradient(145deg, rgb(11, 21, 18), rgb(5, 14, 12));
     box-shadow:  7px 7px 35px #030706,
                 -7px -7px 35px #0d1d18;
-    transition: all 0.5s;
 }
 
 .dark-button:hover {

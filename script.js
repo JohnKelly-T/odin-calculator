@@ -6,9 +6,23 @@ const PRECEDENCE = {
     '-': 1
   };
 
-let expression = document.querySelector("#calculation")
+let theme = "light";
+
+let expression = document.querySelector("#calculation");
 let history = document.querySelector("#history");
 let buttonsContainer = document.querySelector("#buttons-container");
+
+let changeThemeButton = document.querySelector("#change-theme-button");
+let body = document.querySelector("body");
+let mainContainter = document.querySelector("#main-container");
+let outputContainer = document.querySelector("#output-container");
+let buttons = document.querySelectorAll(".button-row button");
+
+window.addEventListener("load", (e) => {
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].classList.add("light-button");
+    }
+})
 
 buttonsContainer.addEventListener("click", (e) => {
     switch (e.target.id) {
@@ -101,6 +115,40 @@ buttonsContainer.addEventListener("click", (e) => {
             history.textContent = expression.textContent + " =";
             expression.textContent = parseExpression(expression.textContent);
             break;
+    }
+})
+
+changeThemeButton.addEventListener("click", (e) => {
+    let prevTheme;
+    if (theme === "light") {
+        theme = "dark";
+        prevTheme = "light";
+    } else {
+        theme = "light";
+        prevTheme = "dark";
+    }
+
+    body.classList.remove(`${prevTheme}-background`);
+    body.classList.add(`${theme}-background`);
+
+    mainContainter.classList.remove(`${prevTheme}-main-container`);
+    mainContainter.classList.add(`${theme}-main-container`);
+
+    outputContainer.classList.remove(`${prevTheme}-output`);
+    outputContainer.classList.add(`${theme}-output`);
+
+    expression.classList.remove(`${prevTheme}-font-color`);
+    expression.classList.add(`${theme}-font-color`);
+
+    buttonsContainer.classList.remove(`${prevTheme}-font-color`);
+    buttonsContainer.classList.add(`${theme}-font-color`);
+
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].classList.add(`${theme}-button`);
+    }
+
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove(`${prevTheme}-button`);
     }
 })
 
