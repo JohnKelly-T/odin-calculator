@@ -14,7 +14,7 @@ let buttonsContainer = document.querySelector("#buttons-container");
 
 let changeThemeButton = document.querySelector("#change-theme-button");
 let body = document.querySelector("body");
-let mainContainter = document.querySelector("#main-container");
+let mainContainer = document.querySelector("#main-container");
 let outputContainer = document.querySelector("#output-container");
 let buttons = document.querySelectorAll(".button-row button");
 
@@ -131,8 +131,8 @@ changeThemeButton.addEventListener("click", (e) => {
     body.classList.remove(`${prevTheme}-background`);
     body.classList.add(`${theme}-background`);
 
-    mainContainter.classList.remove(`${prevTheme}-main-container`);
-    mainContainter.classList.add(`${theme}-main-container`);
+    mainContainer.classList.remove(`${prevTheme}-main-container`);
+    mainContainer.classList.add(`${theme}-main-container`);
 
     outputContainer.classList.remove(`${prevTheme}-output`);
     outputContainer.classList.add(`${theme}-output`);
