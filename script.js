@@ -145,36 +145,6 @@ changeThemeButton.addEventListener("click", (e) => {
         root.style.setProperty("--current-button-shadow-1", `var(--${theme}-button-shadow-1)`);
         root.style.setProperty("--current-button-shadow-2", `var(--${theme}-button-shadow-2)`);
     }, 1500);
-
-
-    
-
-    // body.classList.remove(`${prevTheme}-background`);
-    // body.classList.add(`${theme}-background`);
-
-    // mainContainer.classList.remove(`${prevTheme}-main-container`);
-    // mainContainer.classList.add(`${theme}-main-container`);
-
-    // outputContainer.classList.remove(`${prevTheme}-output`);
-    // outputContainer.classList.add(`${theme}-output`);
-
-    // expression.classList.remove(`${prevTheme}-font-color`);
-    // expression.classList.add(`${theme}-font-color`);
-
-    // buttonsContainer.classList.remove(`${prevTheme}-font-color`);
-    // buttonsContainer.classList.add(`${theme}-font-color`);
-
-    // for (let i = 0; i < buttons.length; i++) {
-    //     buttons[i].style.transition = "none";
-    //     buttons[i].classList.add(`${theme}-button`);
-    //     buttons[i].classList.remove(`${prevTheme}-button`);
-    // }
-
-    // setTimeout( () => {
-    //     for (let i = 0; i < buttons.length; i++) {
-    //         buttons[i].style.transition = "all 0.5s";
-    //     }
-    // }, 500)
 })
 
 function add(a, b) {
