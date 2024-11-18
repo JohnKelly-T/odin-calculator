@@ -14,10 +14,6 @@ let buttonsContainer = document.querySelector("#buttons-container");
 
 let root = document.documentElement;
 let changeThemeButton = document.querySelector("#change-theme-button");
-let body = document.querySelector("body");
-let mainContainer = document.querySelector("#main-container");
-let outputContainer = document.querySelector("#output-container");
-let buttons = document.querySelectorAll(".button-row button");
 
 buttonsContainer.addEventListener("click", (e) => {
     switch (e.target.id) {
