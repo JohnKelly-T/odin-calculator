@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 :root {
+    --opacity: 1;
+
     --light-color: #294665;
     --light-background: #7FB8AA;
     --light-output: rgba(0, 0, 0, 0.05);
@@ -14,17 +16,28 @@
                             -7px -7px 15px #9ADFCE;
 
     --dark-color: rgb(175, 175, 175);
-    --dark-background: #7FB8AA;
+    --dark-background: #08120F;
     --dark-output: rgba(56, 56, 56, 0.05);
     --dark-gradient-1: linear-gradient(145deg, rgb(11, 21, 18), rgb(5, 14, 12));
     --dark-gradient-2: linear-gradient(145deg, rgb(5, 14, 12), rgb(11, 21, 18));
     --dark-box-shadow: 10px 10px 20px #040908,
                       -10px -10px 20px #0C1B17;
-    --dark-button-shadow:  7px 7px 35px #030706,
+    --dark-button-shadow-1:  7px 7px 35px #030706,
                           -7px -7px 35px #0d1d18;
+    --dark-button-shadow-2:  7px 7px 15px #030706,
+                            -7px -7px 15px #0d1d18;
 
-    --transition-half-sec: all 0.5s;
-    --transition-one-sec: all 1s;
+    --current-color: var(--light-color);
+    --current-background: var(--light-background);
+    --current-output: var(--light-output);
+    --current-gradient-1: var(--light-gradient-1);
+    --current-gradient-2: var(--light-gradient-2);
+    --current-box-shadow: var(--light-box-shadow);
+    --current-button-shadow-1:  var(--light-button-shadow-1);
+    --current-button-shadow-2:  var(--light-button-shadow-2);
+    
+
+    --transition: all 0.5s, background 1s, color 0.2s;
 }
 
 * {
@@ -44,7 +57,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
-    background: var(--light-background);
+    background: var(--current-background);
+    transition: var(--transition);
 }
 
 #change-theme-button {
@@ -63,6 +77,8 @@ body {
 }
 
 #main-container {
+    background: var(--current-background);
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,8 +87,19 @@ body {
     height: 70%;
     min-height: 400px;
     aspect-ratio: 9 / 16;
-    background: var(--light-gradient-1);
-    box-shadow: var(--light-box-shadow);
+    box-shadow: var(--current-box-shadow);
+    transition: var(--transition);
+    z-index: 2;
+}
+
+#main-container::before {
+    position: absolute;
+    content: "";
+    inset: 0;
+    background: var(--current-gradient-1);
+    z-index: -1;
+    opacity: var(--opacity);
+    transition: var(--transition);
 }
 
 #output-container {
@@ -83,7 +110,8 @@ body {
     gap: 20%;
     width: 100%;
     height: 30%;
-    background: var(--light-output);
+    background: var(--current-output);
+    transition: var(--transition);
 }
 
 #history {
@@ -102,7 +130,8 @@ body {
     overflow: hidden;
     font-size: 2em;
     font-weight: bold;
-    color: var(--light-color);
+    color: var(--current-color);
+    transition: var(--transition);
 }
 
 #buttons-container {
@@ -113,7 +142,8 @@ body {
     align-items: center;
     gap: 5%;
     width: 73%;
-    color: var(--light-color);
+    color: var(--current-color);
+    transition: var(--transition);
 }
 
 .button-row {
@@ -126,6 +156,7 @@ body {
 }
 
 .button-row button {
+    position: relative;
     color: inherit;
     font-weight: bold;
     font-size: 1.5em;
@@ -136,23 +167,34 @@ body {
     border-radius: 50px;
     aspect-ratio: 1;
     cursor: pointer;
-    background: var(--light-gradient-1);
-    box-shadow: var(--light-button-shadow-1);
-    transition: var(--transition-half-sec);
+    background: var(--current-background);
+    box-shadow: var(--current-button-shadow-1);
+    transition: var(--transition);
+    z-index: 2;
+}
+
+.button-row button::before {
+    position: absolute;
+    content: "";
+    inset: 0;
+    background: var(--current-gradient-1);
+    border-radius: 50px;
+    z-index: -1;
+    opacity: var(--opacity);
+    transition: var(--transition);
 }
 
 .button-row button:hover {
-    box-shadow: var(--light-button-shadow-2);
+    box-shadow: var(--current-button-shadow-2);
 }
 
 .button-row button:active {
-    background: var(--light-gradient-2);
+    background: var(--current-gradient-2);
     box-shadow: none;
 }
 
-.light-button:active {
-    background: linear-gradient(145deg, #72A699, #88C5B6);
-    box-shadow: none;
+.button-row button:active::before {
+    background: var(--current-gradient-2);
 }
 
 #equal {

@@ -5,24 +5,19 @@ const PRECEDENCE = {
     '+': 1,
     '-': 1
   };
-
+const OPERATOR_BUTTON_IDS = ["plus", "minus", "divide", "multiply", "equal"];
 let theme = "light";
 
 let expression = document.querySelector("#calculation");
 let history = document.querySelector("#history");
 let buttonsContainer = document.querySelector("#buttons-container");
 
+let root = document.documentElement;
 let changeThemeButton = document.querySelector("#change-theme-button");
 let body = document.querySelector("body");
 let mainContainer = document.querySelector("#main-container");
 let outputContainer = document.querySelector("#output-container");
 let buttons = document.querySelectorAll(".button-row button");
-
-window.addEventListener("load", (e) => {
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].classList.add("light-button");
-    }
-})
 
 buttonsContainer.addEventListener("click", (e) => {
     switch (e.target.id) {
@@ -128,32 +123,58 @@ changeThemeButton.addEventListener("click", (e) => {
         prevTheme = "dark";
     }
 
-    body.classList.remove(`${prevTheme}-background`);
-    body.classList.add(`${theme}-background`);
+    root.style.setProperty("--current-button-shadow-1", "none");
+    root.style.setProperty("--current-button-shadow-1", "none");
+    root.style.setProperty("--current-box-shadow", "none");
+    root.style.setProperty("--current-output", "none");
+    root.style.setProperty("--opacity", "0");
 
-    mainContainer.classList.remove(`${prevTheme}-main-container`);
-    mainContainer.classList.add(`${theme}-main-container`);
 
-    outputContainer.classList.remove(`${prevTheme}-output`);
-    outputContainer.classList.add(`${theme}-output`);
+    setTimeout(() => {
+        root.style.setProperty("--current-color", `var(--${theme}-color`);
+        root.style.setProperty("--current-background", `var(--${theme}-background`);
+        
+    }, 500);
 
-    expression.classList.remove(`${prevTheme}-font-color`);
-    expression.classList.add(`${theme}-font-color`);
+    setTimeout(() => {
+        root.style.setProperty("--opacity", "1");
+        root.style.setProperty("--current-box-shadow", `var(--${theme}-box-shadow)`);
+        root.style.setProperty("--current-output", `var(--${theme}-output)`);
+        root.style.setProperty("--current-gradient-1", `var(--${theme}-gradient-1)`);
+        root.style.setProperty("--current-gradient-2", `var(--${theme}-gradient-2)`);
+        root.style.setProperty("--current-button-shadow-1", `var(--${theme}-button-shadow-1)`);
+        root.style.setProperty("--current-button-shadow-2", `var(--${theme}-button-shadow-2)`);
+    }, 1500);
 
-    buttonsContainer.classList.remove(`${prevTheme}-font-color`);
-    buttonsContainer.classList.add(`${theme}-font-color`);
 
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].style.transition = "none";
-        buttons[i].classList.add(`${theme}-button`);
-        buttons[i].classList.remove(`${prevTheme}-button`);
-    }
+    
 
-    setTimeout( () => {
-        for (let i = 0; i < buttons.length; i++) {
-            buttons[i].style.transition = "all 0.5s";
-        }
-    }, 500)
+    // body.classList.remove(`${prevTheme}-background`);
+    // body.classList.add(`${theme}-background`);
+
+    // mainContainer.classList.remove(`${prevTheme}-main-container`);
+    // mainContainer.classList.add(`${theme}-main-container`);
+
+    // outputContainer.classList.remove(`${prevTheme}-output`);
+    // outputContainer.classList.add(`${theme}-output`);
+
+    // expression.classList.remove(`${prevTheme}-font-color`);
+    // expression.classList.add(`${theme}-font-color`);
+
+    // buttonsContainer.classList.remove(`${prevTheme}-font-color`);
+    // buttonsContainer.classList.add(`${theme}-font-color`);
+
+    // for (let i = 0; i < buttons.length; i++) {
+    //     buttons[i].style.transition = "none";
+    //     buttons[i].classList.add(`${theme}-button`);
+    //     buttons[i].classList.remove(`${prevTheme}-button`);
+    // }
+
+    // setTimeout( () => {
+    //     for (let i = 0; i < buttons.length; i++) {
+    //         buttons[i].style.transition = "all 0.5s";
+    //     }
+    // }, 500)
 })
 
 function add(a, b) {
