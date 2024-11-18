@@ -213,7 +213,7 @@ body {
 }
 
 #copyright {
-    font-size: 0.8em;
+    font-size: 0.9em;
     margin-bottom: 5vh;
     display: flex;
     flex-direction: column;
@@ -224,4 +224,8 @@ body {
 
 #copyright a {
     color: var(--current-color);
+}
+
+#attribution {
+    font-size: 0.8em;
 }
