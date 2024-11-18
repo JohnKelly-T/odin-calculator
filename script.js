@@ -36,6 +36,10 @@ buttonsContainer.addEventListener("click", (e) => {
             
             break;
         case "percent":
+            if (isNegativeSign()) {
+                break;
+            }
+
             if (isLastCharOperator()) {
                 expression.textContent = expression.textContent.slice(0, -2);
             }
@@ -43,6 +47,10 @@ buttonsContainer.addEventListener("click", (e) => {
             expression.textContent += "%";
             break;
         case "plus":
+            if (isNegativeSign()) {
+                break;
+            }
+            
             if (isLastCharOperator()) {
                 expression.textContent = expression.textContent.slice(0, -2);
             } 
@@ -50,6 +58,10 @@ buttonsContainer.addEventListener("click", (e) => {
             expression.textContent += " +";
             break;
         case "minus":
+            if (isNegativeSign()) {
+                break;
+            }
+            
             if (expression.textContent.slice(-1) === "+" || expression.textContent.slice(-1) === "-") {
                 expression.textContent = expression.textContent.slice(0, -2);
             } 
@@ -58,6 +70,10 @@ buttonsContainer.addEventListener("click", (e) => {
 
             break;
         case "multiply":
+            if (isNegativeSign()) {
+                break;
+            }
+            
             if (isLastCharOperator()) {
                 expression.textContent = expression.textContent.slice(0, -2);
             } 
@@ -65,6 +81,10 @@ buttonsContainer.addEventListener("click", (e) => {
             expression.textContent += " ×";
             break;
         case "divide":
+            if (isNegativeSign()) {
+                break;
+            }
+            
             if (isLastCharOperator()) {
                 expression.textContent = expression.textContent.slice(0, -2);
             } 
@@ -272,7 +292,7 @@ function isNegativeSign() {
         return true;
     }
 
-    if (OPERATORS.includes(expression.textContent.slice(-3).split(" ")[0])) {
+    if (expression.textContent.slice(-1) === "-" && OPERATORS.includes(expression.textContent.slice(-3).split(" ")[0])) {
         return true;
     }
 
