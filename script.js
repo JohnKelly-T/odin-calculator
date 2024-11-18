@@ -227,16 +227,16 @@ function parseExpression(expression) {
 
             switch (token) {
                 case '+':
-                    resultStack.push(num2 + num1);
+                    resultStack.push(add(num1, num2));
                     break;
                 case '-':
-                    resultStack.push(num2 - num1);
+                    resultStack.push(subtract(num1, num2));
                     break;
                 case '×':
-                    resultStack.push(num2 * num1);
+                    resultStack.push(multiply(num1, num2));
                     break; 
                 case '÷':
-                    resultStack.push(num2 / num1);
+                    resultStack.push(divide(num1, num2));
                 break;
             }
         }
