@@ -6,6 +6,8 @@ const PRECEDENCE = {
     '-': 1
   };
 const OPERATOR_BUTTON_IDS = ["plus", "minus", "divide", "multiply", "equal"];
+
+let isOutputPreviousAnswer = false;
 let theme = "light";
 
 let expression = document.querySelector("#calculation");
@@ -16,6 +18,11 @@ let root = document.documentElement;
 let changeThemeButton = document.querySelector("#change-theme-button");
 
 buttonsContainer.addEventListener("click", (e) => {
+    if (isOutputPreviousAnswer) {
+        expression.textContent = "0";
+        isOutputPreviousAnswer = false;
+    }
+
     switch (e.target.id) {
         case "clear":
             expression.textContent = "0";
@@ -125,6 +132,7 @@ buttonsContainer.addEventListener("click", (e) => {
 
             history.textContent = expression.textContent + " =";
             expression.textContent = parseExpression(expression.textContent);
+            isOutputPreviousAnswer = true;
             break;
     }
 })
