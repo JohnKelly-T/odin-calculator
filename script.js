@@ -237,8 +237,7 @@ function parseExpression(expression) {
             }
         }
     }
-
-    return resultStack.pop();
+    return Math.round((resultStack.pop() + Number.EPSILON) * 100) / 100;
 }
 
 // convert expression into postfix notation or Reverse Polish Notation
