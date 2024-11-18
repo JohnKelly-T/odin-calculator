@@ -144,6 +144,7 @@ changeThemeButton.addEventListener("click", (e) => {
     root.style.setProperty("--current-box-shadow", "none");
     root.style.setProperty("--current-output", "none");
     root.style.setProperty("--opacity", "0");
+    root.style.setProperty("--current-button-shadow-2", `var(--${theme}-button-shadow-2)`);
 
 
     setTimeout(() => {
@@ -159,7 +160,6 @@ changeThemeButton.addEventListener("click", (e) => {
         root.style.setProperty("--current-gradient-1", `var(--${theme}-gradient-1)`);
         root.style.setProperty("--current-gradient-2", `var(--${theme}-gradient-2)`);
         root.style.setProperty("--current-button-shadow-1", `var(--${theme}-button-shadow-1)`);
-        root.style.setProperty("--current-button-shadow-2", `var(--${theme}-button-shadow-2)`);
     }, 1500);
 })
 
