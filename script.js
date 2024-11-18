@@ -18,11 +18,6 @@ let root = document.documentElement;
 let changeThemeButton = document.querySelector("#change-theme-button");
 
 buttonsContainer.addEventListener("click", (e) => {
-    if (isOutputPreviousAnswer) {
-        expression.textContent = "0";
-        isOutputPreviousAnswer = false;
-    }
-
     switch (e.target.id) {
         case "clear":
             expression.textContent = "0";
@@ -114,6 +109,9 @@ buttonsContainer.addEventListener("click", (e) => {
         case "7":
         case "8":
         case "9":
+            if (isOutputPreviousAnswer) {
+                expression.textContent = "0";
+            }
             if (isOutputEmpty()) {
                 expression.textContent = e.target.id;
             } else if (isLastCharOperator() && !isNegativeSign()) {
@@ -133,8 +131,10 @@ buttonsContainer.addEventListener("click", (e) => {
             history.textContent = expression.textContent + " =";
             expression.textContent = parseExpression(expression.textContent);
             isOutputPreviousAnswer = true;
-            break;
+            return;
     }
+
+    isOutputPreviousAnswer = false;
 })
 
 changeThemeButton.addEventListener("click", (e) => {
