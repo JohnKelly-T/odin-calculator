@@ -164,6 +164,9 @@ body {
 
 .button-row button {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: inherit;
     font-weight: bold;
     font-size: 1.5em;
