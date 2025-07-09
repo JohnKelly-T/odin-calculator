@@ -92,6 +92,7 @@ body {
     box-shadow: var(--current-box-shadow);
     transition: var(--transition);
     z-index: 2;
+    will-change: box-shadow;
 }
 
 #main-container::before {
@@ -182,6 +183,7 @@ body {
     transition: var(--transition);
     z-index: 2;
     -webkit-tap-highlight-color: transparent;
+    will-change: box-shadow;
 }
 
 .button-row button::before {
